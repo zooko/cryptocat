@@ -441,8 +441,8 @@ else {
 			$name = strtolower($name);
 			session_name('s'.$name);
 			session_start();
-			$chat = file($data.$name);
 			if ($_SESSION['check'] == "OK") {
+				$chat = file($data.$name);
 				preg_match('/'.$nick.'\:[^\|]+\|/', $chat[0], $public);
 				$chat[0] = str_replace($public[0], '', $chat[0]);
 				$chat[count($chat)+1] = '< '.$nick." has left\n";
