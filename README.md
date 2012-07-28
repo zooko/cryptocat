@@ -56,6 +56,9 @@ The full license text is included in `LICENSE.txt`.
 3. Configure settings inside `index.php`.
 
 ### Cryptocat Chrome
+Users who do not wish to rely on the Google-hosted Chrome app market to download and install Cryptocat Chrome may follow these simple instructions in order to install Cryptocat in their browsers.
+We understand the distaste some users may have with obtaining the code from Google; however, we warn that if Cryptocat Chrome is installed in this fashion, automatic updates will not work and the extension will need to be re-installed manually for updates to be applied.
+
 1. Run `make build-chrome-zip` in order to generate a Google Chrome-loadable .zip
 
 ### Cryptocat for Android
