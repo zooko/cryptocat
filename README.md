@@ -52,8 +52,8 @@ The full license text is included in `LICENSE.txt`.
 ## Installation instructions
 ### Cryptocat
 We **absolutely recommend**:
-* Using HTTPS, enforced with an HSTS header similar to `Strict-Transport-Security: max-age=16070400; includeSubDomains`
-* Enforcing a CSP header similar to `X-Content-Security-Policy: allow 'self'`
+* Using HTTPS, enforced with the following HSTS header: `Strict-Transport-Security: max-age=16070400`
+* Enforcing the following CSP headers:`X-Content-Security-Policy: allow 'self'` and `X-WebKit-CSP: allow 'self'`
 
 1. run `make build-server`.
 2. run `make DESTDIR=/var/www/ install-server`, replacing `/var/www/` with your intended web directory.
