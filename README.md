@@ -51,6 +51,10 @@ The full license text is included in `LICENSE.txt`.
 
 ## Installation instructions
 ### Cryptocat
+We **absolutely recommend**:
+* Using HTTPS, enforced with an HSTS header similar to `Strict-Transport-Security: max-age=16070400; includeSubDomains`
+* Enforcing a CSP header similar to `X-Content-Security-Policy: allow 'self'`
+
 1. run `make build-server`.
 2. run `make DESTDIR=/var/www/ install-server`, replacing `/var/www/` with your intended web directory.
 3. Configure settings inside `index.php`.
