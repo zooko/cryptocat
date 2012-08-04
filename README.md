@@ -57,7 +57,7 @@ We **absolutely recommend**:
 
 1. run `make build-server`.
 2. run `make DESTDIR=/var/www/ install-server`, replacing `/var/www/` with your intended web directory.
-3. Configure settings inside `index.php`.
+3. Configure settings inside `index.php` and `js/cat.js`.
 
 ### Cryptocat Chrome
 Users who do not wish to rely on the Google-hosted Chrome app market to download and install Cryptocat Chrome may follow these simple instructions in order to install Cryptocat in their browsers.

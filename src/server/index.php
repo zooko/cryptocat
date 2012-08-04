@@ -1,7 +1,7 @@
 <?php
 	/* Cryptocat, encrypted IM for the accessible web */
 	/* Distributed under the GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007 */
-	/* Copyright (C) 2011, 2012  Nadim Kobeissi <nadim@nadim.cc>
+	/* Copyright (C) 2011, 2012 Nadim Kobeissi <nadim@nadim.cc>
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU Affero General Public License as
@@ -22,6 +22,10 @@
 	/* Vital configuration settings: */
 	/* MIND THE TRAILING SLASHES! */
 	
+	/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+	/* YOU WILL ALSO NEED TO SET THESE SETTINGS IN `js/cat.js`  */
+	/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+	
 	/* Install directory and domain name. */
 	$install = 'https://crypto.cat/';
 	$domain = 'crypto.cat';
@@ -34,7 +38,7 @@
 	/* Chat storage directory. Needs to be writable by web server. */
 	$data = '/srv/data/';
 	/* Maximum users in a chat. Untested above 10. */
-	$maxusers = 10;
+	$maxusers = 12;
 	/* Maximum characters per line (soft limit.) */
 	$maxinput = 256;
 	/* Maximum encrypted file size in kilobytes (soft limit.) */
@@ -288,7 +292,7 @@
 		}
 		if (isset($_GET['close'])) {
 			print('</head>
-			<body><script type="text/javascript">window.open("", "_self", "");window.close();</script></body></html>');
+			<body>Please close me!</body></html>');
 			exit;
 		}
 	?>
@@ -334,7 +338,7 @@ else {
 				<table>
 					<tr>
 						<td class="img"><img src="img/1.png" alt="" /></td>
-						<td id="td1"><strong>Cryptocat</strong> lets you instantly set up secure conversations. It\'s an open source encrypted, private alternative to other services such as Facebook chat.</td>
+						<td id="td1"><strong>Cryptocat</strong> lets you instantly set up private conversations <strong><a href="https://project.crypto.cat/about/" target="_blank">with some limitations</a></strong>. It\'s an open source encrypted alternative to other services.</td>
 					</tr>
 					<tr>
 						<td class="img"><img src="img/2.png" alt="" /></td>
@@ -433,7 +437,6 @@ else {
 				</div>
 			</form>
 			</div>
-			<script type="text/javascript">var install="'.$install.'";var maxinput='.$maxinput.';var genurl='.$genurl.';var filesize='.$filesize.';</script>
 			<script type="text/javascript" src="js/cat.js"></script>');
 		}
 		function logout($name, $nick, $ghost) {

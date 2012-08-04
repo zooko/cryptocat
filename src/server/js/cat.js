@@ -1,3 +1,8 @@
+var install = "https://crypto.cat/"
+var maxinput = 256;
+var genurl = 1;
+var filesize = 600;
+
 var seed = Math.seedrandom();
 var z = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4096, 0];
 var sound = notifications = pos = tag = prikey = pubkey = getreq = putreq = error = 0;
@@ -325,7 +330,7 @@ function getmsg(recovery) {
 				}
 			},
 			error: function() {
-				setTimeout('getmsg(1)', 4000);
+				getmsg(1);
 			}
 		});
 	}
@@ -385,6 +390,7 @@ function getmsg(recovery) {
 }
 
 function queuemsg(msg) {
+	console.log(msg);
 	msg = msg.replace(/\$/g,'&#36;');
 	$('#input').val('');
 	$('#input').focus();
@@ -478,7 +484,7 @@ $("#nickform").submit(function() {
 			pubkey = bigInt2str(ecDH(prikey), 64);
 			$('#keytext').html($('#keytext').html() + ' &#160; &#160; ' + 
 			'<span class="blue">OK</span><br />Communicating');
-			setTimeout("nickset()", 250);
+			nickset();
 		}
 		else {
 			$('#keytext').html('<span class="red">Integrity check failed. Cryptocat cannot proceed safely.</span>');
@@ -829,7 +835,7 @@ window.onfocus = function() {
 	document.title = '[-] Cryptocat';
 };
 window.onblur = function() {
-	blur = setTimeout('cfocus = false', 2000);
+	blur = (cfocus = false);
 };
 document.onblur = window.onblur;
 document.focus = window.focus;
