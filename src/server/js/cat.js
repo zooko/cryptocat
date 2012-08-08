@@ -146,10 +146,10 @@ function tagify(line) {
 			line = line.replace(/^[a-z]{1,12}\:\s\@[a-z]{1,12}/, '<span class="nick">' + thisnick + ' <span class="blue">&gt;</span> ' +
 			atmatch.toString().substring(thisnick.length + 3) + '</span>');  
 			if (match = line.match(/data:image\/\w+\;base64,(\w|\\|\/|\+|\=)*$/)) {
-				line = line.replace(/data:image\/\w+\;base64,(\w|\\|\/|\+|\=)*/, '<a onclick="display(\'' + match[0] + '\', \'' + getstamp(5) + '\', 1)">view encrypted image</a>');
+				line = line.replace(/data:image\/\w+\;base64,(\w|\\|\/|\+|\=)*/, '<a match="' + match[0] + '" stamp="' + getstamp(5) + '" class="viewlink" image="1">view encrypted image</a>');
 			}
 			else if (match = line.match(mime)) {
-				line = line.replace(mime, '<a onclick="display(\'' + match[0] + '\', \'' + getstamp(5) + '\', 0)">download encrypted .zip file</a>');
+				line = line.replace(mime, '<a match="' + match[0] + '" stamp="' + getstamp(5) + '"  class="viewlink" image="0">download encrypted .zip file</a>');
 			}
 		}
 		else {
@@ -234,6 +234,10 @@ function pushline(line, id) {
 	else {tag = 'msg';}
 	line = '<div class="' + tag + '" id="' + id + '"><div class="text">' + line + '</div></div>';
 	$('#chat').html($('#chat').html() + line);
+	$('.viewlink').unbind('click');
+	$('.viewlink').click(function() {
+		display($(this).attr('match'), $(this).attr('stamp'), $(this).attr('image'));
+	});
 }
 
 function bubbleBabble(input) {
@@ -306,9 +310,13 @@ function getkeys(sync) {
 			}
 			var users = [];
 			for (var i=0; i!==names.length; i++) {
-				users[i] = '<span class="user" onclick="userinfo(\'' + names[i] + '\')">' + names[i] + '</span>';
+				users[i] = '<span class="user">' + names[i] + '</span>';
 			}
 			$("#users").html('<span class="users">' + users.length + '</span> ' + users.join(' '));
+			$('.user').unbind('click');
+			$('.user').click(function() {
+				userinfo($(this).html());
+			});
 		}
 	});
 }
